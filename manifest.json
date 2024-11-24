@@ -1,0 +1,28 @@
+{
+    "manifest_version": 3,
+    "name": "Netflix Keyboard Shortcuts",
+    "version": "1.0",
+    "description": "Adds keyboard shortcuts to skip intro and recap on Netflix.",
+    "permissions": ["activeTab", "scripting"],
+    "host_permissions": ["https://www.netflix.com/watch/*"],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://www.netflix.com/watch/*"],
+            "js": ["content.js"]
+        }
+    ],
+    "commands": {
+        "perform-action": {
+            "suggested_key": {
+                "default": "Alt+S"
+            },
+            "description": "Perform Netflix Action (Skip Intro, Skip Recap, Next Episode)"
+        }
+    },
+    "action": {
+        "default_popup": "popup.html"
+    }
+}
